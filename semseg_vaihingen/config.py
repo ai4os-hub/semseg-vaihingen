@@ -6,7 +6,6 @@ import os
 from os import path
 from webargs import fields, validate
 
-
 # identify basedir for the package
 BASE_DIR = path.dirname(path.normpath(path.dirname(__file__)))
 
@@ -28,7 +27,7 @@ MODEL_DIR = path.join(IN_OUT_BASE_DIR, 'models') # Location + name of the output
 
 MODEL_WEIGHTS_FILE = 'resnet50_fcn_weights.hdf5'
 #MODEL_REMOTE_PUBLIC = 'https://nc.deep-hybrid-datacloud.eu/s/eTqJexZ5PcBxXR6/download?path='
-MODEL_REMOTE_PUBLIC = 'https://share.services.ai4os.eu/index.php/s/Wmao2GcetQA327g/download?path='
+MODEL_REMOTE_PUBLIC = 'https://share.services.ai4os.eu/index.php/s/HmEQBESC45jPN6H/download?path='
 REMOTE_STORAGE = 'rshare:/semseg_vaihingen'
 REMOTE_MODELS_UPLOAD = path.join(REMOTE_STORAGE, 'models')
 NUM_LABELS = 6  # max number of labels

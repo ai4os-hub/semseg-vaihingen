@@ -14,7 +14,7 @@ received funding from the European Union’s Horizon 2020 research and innovatio
 This is an example application for [ISPRS 2D Semantic Labeling Contest ](http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html):
     "2D semantic segmentation (Vaihingen dataset) that assigns labels to multiple object categories.",
 
-You can find more information about it in the [DEEP Marketplace](https://marketplace.deep-hybrid-datacloud.eu/modules/deep-oc-semseg-vaihingen.html).
+You can find more information about it in the [AI4OS Marketplace](https://dashboard.cloud.ai4eosc.eu/marketplace)
 
 **Table of contents**
 1. [Installing this module](#installing-this-module)
@@ -39,14 +39,14 @@ To start using this framework clone the repo:
 
 ```bash
 git clone https://github.com/ai4os-hub/semseg-vaihingen
-cd semseg_vaihingen
+cd semseg-vaihingen
 pip install -e .
 ```
 now run DEEPaaS:
 ```
 deepaas-run --listen-ip 0.0.0.0
 ```
-and open http://0.0.0.0:5000/ui and look for the methods belonging to the `semseg_vaihingen` module.
+and open http://0.0.0.0:5000/ui and look for the methods belonging to the `semseg-vaihingen` module.
 
 ### Docker installation
 
@@ -54,18 +54,18 @@ We have also prepared a ready-to-use [Docker container](https://github.com/ai4os
 run this module. To run it:
 
 ```bash
-docker search deephdc
+docker search ai4oshub
 docker run -ti -p 5000:5000 -p 6006:6006 -p 8888:8888 ai4oshub/semseg-vaihingen
 ```
 
-Now open http://0.0.0.0:5000/ui and look for the methods belonging to the `semseg_vaihingen` module.
+Now open http://0.0.0.0:5000/ui and look for the methods belonging to the `semseg-vaihingen` module.
 
 
 ## Train a the classifier
 
 ### Data preprocessing
 
-The first step to train the neural network is to put the training file `vaihingen_train.hdf5` and the validation file `vaihingen_val.hdf5` into `./semseg_vaihingen/data`. More information about how to acquire the vaihingen dataset can be found [here](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html).
+The first step to train the neural network is to put the training file `vaihingen_train.hdf5` and the validation file `vaihingen_val.hdf5` into `./semseg-vaihingen/data`. More information about how to acquire the vaihingen dataset can be found [here](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html).
 
 An example script on how one may convert raw data into hdf5 file is also provided in semseg_vaihingen/dataset/raw2hdf5.py.
 

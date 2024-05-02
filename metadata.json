@@ -11,7 +11,7 @@
     "* The groundtruth is provided for only 16 patches",
     "* For the remaining scenes it is unreleased and used for evaluation of submitted results",
     "",
-    "**N.B.:** pre-trained weights can be found <a href=https://share.services.ai4os.eu/index.php/s/Wmao2GcetQA327g>here</a> (unzip before use!)",
+    "**N.B.:** pre-trained weights can be found <a href=https://share.services.ai4os.eu/index.php/s/HmEQBESC45jPN6H/download?path=/models&files=resnet50_fcn_weights.hdf5.zip>here</a> (unzip before use!)",
     "",
     "**References**\n",
     "[1] <a href=http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html>http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html</a> \n",
