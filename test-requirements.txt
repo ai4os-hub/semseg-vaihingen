@@ -6,11 +6,10 @@ pylint
 # https://bitbucket.org/ned/coveragepy/issues/519/
 coverage!=4.4,>=4.0 # Apache-2.0
 
-stestr>=1.0.0 # Apache-2.0
 testtools>=1.4.0
 
 pytest
 pytest-cov
 
-tensorflow==1.10.0
+tensorflow==1.12.0
 pydot-ng
