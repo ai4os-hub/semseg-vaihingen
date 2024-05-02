@@ -80,6 +80,12 @@ RUN git clone -b $branch https://github.com/ai4os-hub/semseg-vaihingen.git && \
     rm -rf /tmp/* && \
     cd ..
 
+# Download default weights
+ENV SEMSEG_WEIGHTS_ZIP="resnet50_fcn_weights.hdf5.zip"
+
+RUN curl -L "https://share.services.ai4os.eu/index.php/s/HmEQBESC45jPN6H/download?path=/models&files=${SEMSEG_WEIGHTS_ZIP}" \
+    -o /srv/semseg-vaihingen/models/${SEMSEG_WEIGHTS_ZIP}
+
 # Open ports (deepaas, monitoring, ide)
 EXPOSE 5000 6006 8888
 

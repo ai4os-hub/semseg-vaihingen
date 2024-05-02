@@ -2,13 +2,14 @@
 """
 Model description
 """
+import argparse
 import os
 import json
-import yaml
-import argparse
-import zipfile
 import pkg_resources
 import subprocess
+import tempfile
+import yaml
+import zipfile
 from keras import backend
 
 import flask
@@ -142,22 +143,24 @@ def predict(**args):
     convert_gray = False
     if 'convert_grayscale' in args:
         convert_gray = yaml.safe_load(args['convert_grayscale'])
-    
+
+    # let's create TempDirectory()
+    temp_dir = tempfile.TemporaryDirectory()
     for image in imgs:
         image_name = image.filename
-        original_name =  "/tmp/%s" % image.original_filename
+        original_name =  os.path.join(temp_dir.name, image.original_filename)
         os.rename(image.filename, original_name) 
         filename, image_form = os.path.splitext(image.original_filename)
-        
+
         if image_form.lower() == '.hdf5':
             hf = h5py.File(original_name, 'r')
             print([key for key in hf.keys()])
             hf.close()
-            
+
         else:
             image_tmp = Image.open(original_name)
             image_tmp.save("%s" % original_name)
-            
+
         print(("Stored file (temporarily) at: {} \t Size: {}".format(original_name,
         os.path.getsize(original_name))))
 
@@ -216,7 +219,7 @@ def predict(**args):
         except Exception as e:
             raise e
         finally:
-            os.remove(original_name)
+            temp_dir.cleanup()
 
     if(args['accept'] == 'application/pdf'):
         
