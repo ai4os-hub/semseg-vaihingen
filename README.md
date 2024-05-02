@@ -1,7 +1,7 @@
 2D semantic segmentation
 ==============================
 
-[![Build Status](https://jenkins.indigo-datacloud.eu/buildStatus/icon?job=Pipeline-as-code%2FDEEP-OC-org%2Fsemseg_vaihingen%2Fmaster)](https://jenkins.indigo-datacloud.eu/job/Pipeline-as-code/job/DEEP-OC-org/job/semseg_vaihingen/job/master/)
+[![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/semseg-vaihingen/main)](https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/semseg-vaihingen/job/main//)
 ----
 
 2D semantic segmentation (Vaihingen dataset)
@@ -38,7 +38,7 @@ You can find more information about it in the [DEEP Marketplace](https://marketp
 To start using this framework clone the repo:
 
 ```bash
-git clone https://github.com/deephdc/semseg_vaihingen
+git clone https://github.com/ai4os-hub/semseg-vaihingen
 cd semseg_vaihingen
 pip install -e .
 ```
@@ -50,12 +50,12 @@ and open http://0.0.0.0:5000/ui and look for the methods belonging to the `semse
 
 ### Docker installation
 
-We have also prepared a ready-to-use [Docker container](https://github.com/deephdc/DEEP-OC-semseg_vaihingen) to
+We have also prepared a ready-to-use [Docker container](https://github.com/ai4os-hub/semseg-vaihingen) to
 run this module. To run it:
 
 ```bash
 docker search deephdc
-docker run -ti -p 5000:5000 -p 6006:6006 -p 8888:8888 deephdc/deep-oc-semseg_vaihingen
+docker run -ti -p 5000:5000 -p 6006:6006 -p 8888:8888 ai4oshub/semseg-vaihingen
 ```
 
 Now open http://0.0.0.0:5000/ui and look for the methods belonging to the `semseg_vaihingen` module.

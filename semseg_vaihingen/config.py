@@ -27,8 +27,8 @@ DATA_DIR = path.join(IN_OUT_BASE_DIR, 'data') # Location of model data and outpu
 MODEL_DIR = path.join(IN_OUT_BASE_DIR, 'models') # Location + name of the output model
 
 MODEL_WEIGHTS_FILE = 'resnet50_fcn_weights.hdf5'
-
-MODEL_REMOTE_PUBLIC = 'https://nc.deep-hybrid-datacloud.eu/s/eTqJexZ5PcBxXR6/download?path='
+#MODEL_REMOTE_PUBLIC = 'https://nc.deep-hybrid-datacloud.eu/s/eTqJexZ5PcBxXR6/download?path='
+MODEL_REMOTE_PUBLIC = 'https://share.services.ai4os.eu/index.php/s/Wmao2GcetQA327g/download?path='
 REMOTE_STORAGE = 'rshare:/semseg_vaihingen'
 REMOTE_MODELS_UPLOAD = path.join(REMOTE_STORAGE, 'models')
 NUM_LABELS = 6  # max number of labels

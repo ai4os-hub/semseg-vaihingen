@@ -1,56 +1,57 @@
 {
-    "title": "2D semantic segmentation",
-    "summary": "2D semantic segmentation trained on the Vaihingen dataset",
-    "description": [
-	   "Example application for ISPRS 2D Semantic Labeling Contest [1]:\n",
-           "2D semantic segmentation (Vaihingen dataset [2]) that assigns labels to multiple object categories.\n\n",
-           "**Vaihingen dataset**\n",
-           "* 33 patches of different sizes with 9 cm spatial resolution",
-           "* Manually classified into six land cover classes:",
-           "* Impervious surfaces, Building, Low vegetation, Tree, Clutter/background",
-           "* The groundtruth is provided for only 16 patches",
-           "* For the remaining scenes it is unreleased and used for evaluation of submitted results",
-           "",
-           "**N.B.:** pre-trained weights can be found <a href=https://nc.deep-hybrid-datacloud.eu/s/eTqJexZ5PcBxXR6>here</a> (unzip before use!)",
-           "",
-           "**References**\n",
-           "[1] <a href=http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html>http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html</a> \n",
-           "[2] M. Cramer: The DGPF-Test on Digital Airborne Camera Evaluation Overview and Test Design, ",
-                "PFG Photogrammetrie, Fernerkundung, Geoinformation, vol. 2010, no. 2, pp. 73-82, 2010.\n"
-	],
-    "keywords": [
-        "tensorflow",
-        "semantic segmentation",
-        "cnn",
-        "trainable",
-        "inference",
-        "pre-trained",
-        "api-v2",
-        "image"
-    ],
-    "license": "MIT",
-    "date_creation": "2019-09-29",
-    "dataset_url": "http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html",
-    "sources": {
-		"dockerfile_repo": "https://github.com/deephdc/DEEP-OC-semseg_vaihingen",
-		"docker_registry_repo": "deephdc/deep-oc-semseg_vaihingen",
-		"code": "https://github.com/deephdc/semseg_vaihingen"
-	},
-    "continuous_integration": {
-        "build_status_badge": "https://jenkins.indigo-datacloud.eu/buildStatus/icon?job=Pipeline-as-code/DEEP-OC-org/DEEP-OC-semseg_vaihingen/master",
-        "build_status_url": "https://jenkins.indigo-datacloud.eu/job/Pipeline-as-code/job/DEEP-OC-org/job/DEEP-OC-semseg_vaihingen/job/master"
-    },
-    "tosca": [
-        {
-            "title": "Marathon",
-            "url": "https://raw.githubusercontent.com/indigo-dc/tosca-templates/master/deep-oc/deep-oc-marathon.yml",
-            "inputs": [
-                "rclone_conf",
-                "rclone_url",
-                "rclone_vendor",
-                "rclone_user",
-                "rclone_pass"
-            ]
-        }
-    ]
+  "title": "2D semantic segmentation",
+  "summary": "2D semantic segmentation trained on the Vaihingen dataset",
+  "description": [
+    "Example application for ISPRS 2D Semantic Labeling Contest [1]:\n",
+    "2D semantic segmentation (Vaihingen dataset [2]) that assigns labels to multiple object categories.\n\n",
+    "**Vaihingen dataset**\n",
+    "* 33 patches of different sizes with 9 cm spatial resolution",
+    "* Manually classified into six land cover classes:",
+    "* Impervious surfaces, Building, Low vegetation, Tree, Clutter/background",
+    "* The groundtruth is provided for only 16 patches",
+    "* For the remaining scenes it is unreleased and used for evaluation of submitted results",
+    "",
+    "**N.B.:** pre-trained weights can be found <a href=https://share.services.ai4os.eu/index.php/s/Wmao2GcetQA327g>here</a> (unzip before use!)",
+    "",
+    "**References**\n",
+    "[1] <a href=http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html>http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html</a> \n",
+    "[2] M. Cramer: The DGPF-Test on Digital Airborne Camera Evaluation Overview and Test Design, ",
+    "PFG Photogrammetrie, Fernerkundung, Geoinformation, vol. 2010, no. 2, pp. 73-82, 2010.\n"
+  ],
+  "keywords": [
+    "tensorflow",
+    "semantic segmentation",
+    "cnn",
+    "trainable",
+    "inference",
+    "pre-trained",
+    "api-v2",
+    "image"
+  ],
+  "license": "MIT",
+  "date_creation": "2019-09-29",
+  "dataset_url": "http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html",
+  "sources": {
+    "dockerfile_repo": "https://github.com/ai4os-hub/semseg-vaihingen",
+    "docker_registry_repo": "ai4oshub/semseg-vaihingen",
+    "code": "https://github.com/ai4os-hub/semseg-vaihingen",
+    "ai4_template": "ai4-template/1.9.9"
+  },
+  "continuous_integration": {
+    "build_status_badge": "https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/semseg-vaihingen/main",
+    "build_status_url": "https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/semseg-vaihingen/job/main/"
+  },
+  "tosca": [
+    {
+      "title": "Marathon",
+      "url": "https://raw.githubusercontent.com/indigo-dc/tosca-templates/master/deep-oc/deep-oc-marathon.yml",
+      "inputs": [
+        "rclone_conf",
+        "rclone_url",
+        "rclone_vendor",
+        "rclone_user",
+        "rclone_pass"
+      ]
+    }
+  ]
 }
