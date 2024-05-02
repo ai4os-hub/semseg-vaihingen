@@ -1,111 +1,48 @@
-#!/usr/bin/groovy
+@Library(['github.com/indigo-dc/jenkins-pipeline-library@release/2.1.1']) _
 
-@Library(['github.com/indigo-dc/jenkins-pipeline-library@1.2.3']) _
-
-def job_result_url = ''
+def projectConfig
 
 pipeline {
-    agent {
-        label 'python3.6'
-    }
-
-    environment {
-        author_name = "G.Cavallaro (FZJ), M.Goetz (KIT), V.Kozlov (KIT)"
-        author_email = "valentin.kozlov@kit.edu"
-        app_name = "semseg_vaihingen"
-        job_location = "Pipeline-as-code/DEEP-OC-org/DEEP-OC-semseg_vaihingen/${env.BRANCH_NAME}"
-    }
+    agent any
 
     stages {
-        stage('Code fetching') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Style analysis: PEP8') {
-            steps {
-                ToxEnvRun('pep8')
-            }
-            post {
-                always {
-                    warnings canComputeNew: false,
-                             canResolveRelativePaths: false,
-                             defaultEncoding: '',
-                             excludePattern: '',
-                             healthy: '',
-                             includePattern: '',
-                             messagesPattern: '',
-                             parserConfigurations: [[parserName: 'PYLint', pattern: '**/flake8.log']],
-                             unHealthy: ''
-                }
-            }
-        }
-
-        stage('Security scanner') {
-            steps {
-                ToxEnvRun('bandit-report')
-                script {
-                    if (currentBuild.result == 'FAILURE') {
-                        currentBuild.result = 'UNSTABLE'
-                    }
-               }
-            }
-            post {
-               always {
-                    HTMLReport("/tmp/bandit", 'index.html', 'Bandit report')
-                }
-            }
-        }
-
-        stage("Re-build Docker images") {
-            when {
-                anyOf {
-                   branch 'master'
-                   branch 'test'
-                   buildingTag()
-               }
-            }
+        stage('Application testing') {
             steps {
                 script {
-                    def job_result = JenkinsBuildJob("${env.job_location}")
-                    job_result_url = job_result.absoluteUrl
+                    projectConfig = pipelineConfig()
+                    buildStages(projectConfig)
                 }
             }
         }
-
     }
-
     post {
-        failure {
-            script {
-                currentBuild.result = 'FAILURE'
-            }
-        }
-
-        always  {
-            script { //stage("Email notification")
-                def build_status =  currentBuild.result
-                build_status =  build_status ?: 'SUCCESS'
-                def subject = """
-New ${app_name} build in Jenkins@DEEP:\
-${build_status}: Job '${env.JOB_NAME}\
-[${env.BUILD_NUMBER}]'"""
-
-                def body = """
-Dear ${author_name},\n\n
-A new build of '${app_name}' DEEP application is available in Jenkins at:\n\n
-*  ${env.BUILD_URL}\n\n
-terminated with '${build_status}' status.\n\n
-Check console output at:\n\n
-*  ${env.BUILD_URL}/console\n\n
-and resultant Docker images rebuilding jobs at (may be empty in case of FAILURE):\n\n
-*  ${job_result_url}\n\n
-
-DEEP Jenkins CI service"""
-
-                EmailSend(subject, body, "${author_email}")
-            }
-        }
+        // publish results and clean-up
+        always {
+            // file locations are defined in tox.ini
+            // publish results of the style analysis
+            recordIssues(enabledForFailure: true,
+                         tools: [flake8(pattern: 'flake8.log',
+                                 name: 'PEP8 report',
+                                 id: "flake8_pylint")])
+            // publish results of the coverage test
+            publishHTML([allowMissing: false, 
+                                 alwaysLinkToLastBuild: false, 
+                                 keepAll: true, 
+                                 reportDir: "htmlcov", 
+                                 reportFiles: 'index.html', 
+                                 reportName: 'Coverage report', 
+                                 reportTitles: ''])
+            // publish results of the security check
+            publishHTML([allowMissing: false, 
+                         alwaysLinkToLastBuild: false, 
+                         keepAll: true, 
+                         reportDir: "bandit", 
+                         reportFiles: 'index.html', 
+                         reportName: 'Bandit report', 
+                         reportTitles: ''])
+            // Clean after build
+            cleanWs()
+        }    
     }
 }
+
