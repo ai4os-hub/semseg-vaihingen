@@ -1,0 +1,29 @@
+{
+    "title": "2D semantic segmentation",
+    "summary": "2D semantic segmentation trained on the Vaihingen dataset",
+    "description": "\"Example application for ISPRS 2D Semantic Labeling Contest [1]:\\n\" \"2D semantic segmentation (Vaihingen dataset [2]) that assigns labels to multiple object categories.\\n\\n\" \"**Vaihingen dataset**\\n\" \"* 33 patches of different sizes with 9 cm spatial resolution\" \"* Manually classified into six land cover classes:\" \"* Impervious surfaces, Building, Low vegetation, Tree, Clutter/background\" \"* The groundtruth is provided for only 16 patches\" \"* For the remaining scenes it is unreleased and used for evaluation of submitted results\" \"\" \"**N.B.:** pre-trained weights can be found <a href=https://share.services.ai4os.eu/index.php/s/HmEQBESC45jPN6H/download?path=/models&files=resnet50_fcn_weights.hdf5.zip>here<\\/a> (unzip before use!)\" \"\" \"**References**\\n\" \"[1] <a href=http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html>http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html<\\/a> \\n\" \"[2] M. Cramer: The DGPF-Test on Digital Airborne Camera Evaluation Overview and Test Design, \" \"PFG Photogrammetrie, Fernerkundung, Geoinformation, vol. 2010, no. 2, pp. 73-82, 2010.\\n\"",
+    "dates":     {
+        "created": "2019-09-29",
+        "updated": "2024-05-29"
+    },
+    "license": "MIT",
+    "links":     {
+        "source_code": "https://github.com/ai4os-hub/semseg-vaihingen",
+        "docker_image": "ai4oshub/semseg-vaihingen",
+        "ai4_template": "ai4-template/1.9.9",
+        "dataset": "http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html"
+    },
+    "tags": [],
+    "topics": [],
+    "libraries": ["TensorFlow"],
+    "keywords":     [
+        "tensorflow",
+        "semantic segmentation",
+        "cnn",
+        "trainable",
+        "inference",
+        "pre-trained",
+        "api-v2",
+        "image"
+    ]
+}
