@@ -16,7 +16,7 @@ description: |-
   pre-trained weights can be found [here](https://share.services.ai4os.eu/index.php/s/HmEQBESC45jPN6H/download?path=/models&files=resnet50_fcn_weights.hdf5.zip) (unzip before use!)
 
   **References**
-  1.http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html
+  1. http://www2.isprs.org/commissions/comm3/wg4/semantic-labeling.html
   2. M. Cramer: The DGPF-Test on Digital Airborne Camera Evaluation Overview and Test Design,  PFG Photogrammetrie, Fernerkundung, Geoinformation, vol. 2010,no. 2, pp. 73-82, 2010.
 dates:
   created: '2019-09-29'
