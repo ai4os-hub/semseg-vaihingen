@@ -38,7 +38,7 @@ deepaas>=1.3.0, <3.0
 Pillow~=7.1.2
 matplotlib~=3.2.1
 flaat~=0.8.0
-aiohttp~=3.6.0
+aiohttp~=3.8.1
 
 # Below is the old content of requirements.txt
 #
